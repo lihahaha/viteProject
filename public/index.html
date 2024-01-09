@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <style>
+      @font-face {
+        font-family: 'Youshe';
+        src: url('./fonts/youshe.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'JtTitle';
+        src: url('./fonts/YouSheBiaoTiHei.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'Din';
+        src: url('./fonts/DIN Alternate Bold.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'OurceHanSansCN';
+        src: url('./fonts/SourceHanSansCN-Medium.otf') format('truetype');
+      }
+    </style>
+    <script src="%PUBLIC_URL%/libs/fastclick.js"></script>
+    <script src="%PUBLIC_URL%/libs/remogeo.js"></script>
+    <script>
+      if ('addEventListener' in document) {
+        document.addEventListener(
+          'DOMContentLoaded',
+          function () {
+            // FastClick.attach(document.body);
+            try {
+              let versionNumber = navigator.userAgent
+                .toLowerCase()
+                .match(/cpu iphone os (.*?) like mac os/)[1]
+                .replace(/_/g, '.');
+
+              if (
+                !/iphone|ipod|ipad/i.test(navigator.appVersion) ||
+                Number(versionNumber) < 11
+              ) {
+                FastClick.attach(document.body);
+              }
+            } catch (e) {
+              console.log(e);
+            }
+          },
+          false
+        );
+      }
+      if (!window.Promise) {
+        document.writeln(
+          '<script src="%PUBLIC_URL%/libs/es6-promise.min.js"' +
+            '>' +
+            '<' +
+            '/' +
+            'script>'
+        );
+      }
+
+      (function () {
+        function autoRootFontSize() {
+          document.documentElement.style.fontSize =
+            (Math.min(
+              screen.width,
+              document.documentElement.getBoundingClientRect().width
+            ) /
+              375) *
+              10 +
+            'px';
+        }
+        window.addEventListener('resize', autoRootFontSize);
+        autoRootFontSize();
+      })();
+    </script>
+    <script src="%PUBLIC_URL%/libs/echarts.min.js"></script>
+    <!-- 微信js SDK -->
+    <script src="%PUBLIC_URL%/libs/jweixin-1.3.0.js"></script>
+    <script
+      type="text/javascript"
+      src="./libs/easyplayer/EasyPlayer-element.min.js"
+    ></script>
+    <title>中原区智慧城管</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

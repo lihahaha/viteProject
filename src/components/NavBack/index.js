@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { NavBar } from "antd-mobile";
-import styles from "./index.module.less";
-import { withRouter } from "react-router-dom";
+import React, { useState } from 'react';
+import { NavBar } from 'antd-mobile-v5';
+import styles from './index.module.less';
+import { withRouter } from 'react-router-dom';
 
 const Index = ({ history, title, onBack, className }) => {
   const back = () => {
-    if (onBack && typeof onBack === "function") {
+    if (onBack && typeof onBack === 'function') {
       onBack();
     } else {
       history.goBack();
@@ -15,10 +15,9 @@ const Index = ({ history, title, onBack, className }) => {
   return (
     <>
       <NavBar
-        className={`${styles.gobackArea} ${className || ""}`}
+        className={`${styles.gobackArea} ${className || ''}`}
         onBack={back}
-        backArrow={<div className={styles.gobackBtn}></div>}
-      >
+        backArrow={<div className={styles.gobackBtn}></div>}>
         <span className={styles.title}>{title}</span>
       </NavBar>
     </>

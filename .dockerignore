@@ -1,0 +1,11 @@
+/config
+/node_modules
+/public
+/scripts
+/src
+/.*
+.*
+*.release
+*.md
+*.json
+*.tar
