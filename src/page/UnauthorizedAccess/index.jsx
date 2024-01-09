@@ -1,6 +1,6 @@
-import React from 'react';
-import { ErrorBlock } from 'antd-mobile-v5';
-import './index.less';
+import React from "react";
+import { ErrorBlock } from "antd-mobile";
+import "./index.less";
 
 const Index = () => {
   return (

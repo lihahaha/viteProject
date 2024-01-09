@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import style from './index.module.less';
+import React, { useState, useEffect, useRef } from "react";
+import style from "./index.module.less";
 
 const Index = ({ history }) => {
   return (

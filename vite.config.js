@@ -8,7 +8,7 @@ export default defineConfig((command, mode) => {
   return {
     plugins: [react()],
     base: "",
-    reslove: {
+    resolve: {
       extensions: [".mjs", ".js", ".mts", ".ts", ".jsx", ".tsx", ".json"],
       alias: [{ find: "@/", replacement: "/src/" }],
     },
