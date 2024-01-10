@@ -2,7 +2,6 @@ import React, { Component, useState, useEffect } from 'react';
 import style from './index.module.less';
 import { postLogin } from '@/services/apis/common';
 import { InputItem, Button, Toast } from 'antd-mobile';
-import { inject, observer } from 'mobx-react';
 import {
   queryParams,
   encryptionString,
@@ -11,8 +10,12 @@ import {
   encryption
 } from '@/utils';
 import { encryptionKey } from '@/utils/constant';
+import useStores from '@/utils/useStores';
+import accountPng from '@/assets/img/login/account.png';
+import passIconPng from '@/assets/img/login/passIcon.png';
 
-const Index = ({ CommonStore }) => {
+const Index = () => {
+  const { CommonStore } = useStores();
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
 
@@ -84,11 +87,7 @@ const Index = ({ CommonStore }) => {
                 placeholder="请输入账号"
                 value={userId}
                 onChange={(e) => setUserId(e)}>
-                <img
-                  src={require('@/assets/img/login/account.png')}
-                  alt=""
-                  style={{ height: '2rem' }}
-                />
+                <img src={accountPng} alt="" style={{ height: '2rem' }} />
               </InputItem>
             </div>
             <InputItem
@@ -97,11 +96,7 @@ const Index = ({ CommonStore }) => {
               placeholder="请输入密码"
               value={password}
               onChange={(e) => setPassword(e)}>
-              <img
-                src={require('@/assets/img/login/passIcon.png')}
-                alt=""
-                style={{ height: '1.6rem' }}
-              />
+              <img src={passIconPng} alt="" style={{ height: '1.6rem' }} />
             </InputItem>
           </div>
           <Button className={'loginBtn'} onClick={onSubmit}>
@@ -113,4 +108,4 @@ const Index = ({ CommonStore }) => {
   );
 };
 
-export default inject('CommonStore')(observer(Index));
+export default Index;
