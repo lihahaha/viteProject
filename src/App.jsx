@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { routers, loginRoute } from '@/router';
-import stores from '@/stores';
+import useStores from '@/utils/useStores';
 import { Provider } from 'mobx-react';
 import { Toast } from 'antd-mobile';
 import '@/assets/less/font.less';
@@ -16,12 +16,14 @@ import { decode, encode } from 'js-base64';
 import qs from 'qs';
 
 function App() {
+  const { CommonStore } = useStores();
   const [token, setToken] = useState(''); // 本地登录后获取token
   const [code, setCode] = useState(''); // 通过第三方跳转方式获取到的code，通过接口在获取token
   const [isAuthenticated, setIsAuthenticated] = useState(true); // 接口判断，有无页面权限
 
   document.cookie = 'yunli-gis-token=' + gisAccessKey + ';path=/';
   useEffect(() => {
+    console.log(CommonStore.isModalVisible);
     const code = getUrlSearchValueByName('code');
     console.log('code', code);
     const pathname = window.location.pathname;
@@ -57,7 +59,7 @@ function App() {
   }, []);
 
   return (
-    <Provider {...stores}>
+    <Provider>
       <HashRouter>
         <Routes>
           {routers.map((route) => (
